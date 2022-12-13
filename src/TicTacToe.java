@@ -1,13 +1,10 @@
+import java.util.Scanner;
 /**
- * 
- */
-
-/**
- * @author Abdullah Salim 
- *
+ * @author Abdullah Salim
+ *  TicTacToe game class 
  */
 public class TicTacToe {
-
+	
     static char[][] board = new char[][]{{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
     static int[][] gameWiningPossibilities = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     static char symbolPlayerOne = ' ';
@@ -24,6 +21,7 @@ public class TicTacToe {
                 System.out.println("Invalid name for players, players cannot have the same name :(\n");
             }
         } while (symbolPlayerOne == symbolPlayerTwo);
+        
         // boolean value for toggling current player
         boolean togglePlayer = true;
         int gameTryCount = 0;
