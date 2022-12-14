@@ -1,12 +1,19 @@
 import java.util.Scanner;
 /**
  * @author Abdullah Salim
- *  TicTacToe game class 
+ *  TicTacToe game class
+ *  The game is CLI game 3x3, it accepts two player with Symbol chars, one player win. 
  */
 public class TicTacToe {
 	
     static char[][] board = new char[][]{{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
-    static int[][] gameWiningPossibilities = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    
+    /*
+     * gameWinningPossibilites 2D array has wining combination such if one player has selected one of these 
+     * such as 1, 2, 3 will win. 
+     * playerWin function depends on it for evaluate winning player.
+     */
+    static int[][] gameWinningPossibilities = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     static char symbolPlayerOne = ' ';
     static char symbolPlayerTwo = ' ';
 
@@ -24,6 +31,7 @@ public class TicTacToe {
         
         // boolean value for toggling current player
         boolean togglePlayer = true;
+        // gameTryCount used to count the number of tries for game.
         int gameTryCount = 0;
         do {
             char currentPlayer;
@@ -74,13 +82,24 @@ public class TicTacToe {
         }
         System.out.println("\n\n");
     }
+    /*
+     * checkVaildInput used to check valid input from player, it return boolean value.
+     * The function has two condition to validate first condition is the place between (1 .. 9),
+     * second condition used for is the place has been used or not. 
+     */
     public static boolean checkValidInput(int playerChoosedPlace, int row, int column) {
         if (playerChoosedPlace < 1 || playerChoosedPlace > 10) {
             return false;
         } else return board[row][column] != symbolPlayerOne && board[row][column] != symbolPlayerTwo;
     }
+    
+    /*
+     * playerWin used to check if the player win, it returns boolean value.
+     * it iterate in gameWinningPossibilites to lookup if there's winning player
+     * @param currentPlayer char symbol
+     */
     public static boolean playerWin(char currentPlayer) {
-        for (int[] gameWiningPossibility : gameWiningPossibilities) {
+        for (int[] gameWiningPossibility : gameWinningPossibilities) {
             int winningPossibleStage = 0;
             for (int columnWinningCombination = 0; columnWinningCombination < 3; columnWinningCombination++) {
                 int[] rowColumn = getRowColumn(gameWiningPossibility[columnWinningCombination]);
