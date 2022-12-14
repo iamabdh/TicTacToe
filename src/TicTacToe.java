@@ -99,21 +99,19 @@ public class TicTacToe {
      * @param currentPlayer char symbol
      */
     public static boolean playerWin(char currentPlayer) {
-        for (int[] gameWiningPossibility : gameWinningPossibilities) {
-            int winningPossibleStage = 0;
-            for (int columnWinningCombination = 0; columnWinningCombination < 3; columnWinningCombination++) {
-                int[] rowColumn = getRowColumn(gameWiningPossibility[columnWinningCombination]);
+    	int winningPossibleCount = 0;
+        for (int winnigComintation = 0; winnigComintation < gameWinningPossibilities.length && winningPossibleCount != 3; winnigComintation ++) {
+        	winningPossibleCount = 0;
+            for (int columnWinningCombination = 0; columnWinningCombination < gameWinningPossibilities[winnigComintation].length; columnWinningCombination++) {
+                int[] rowColumn = getRowColumn(gameWinningPossibilities[winnigComintation][columnWinningCombination]);
                 int row = rowColumn[0];
                 int column = rowColumn[1];
                 if (board[row][column] == currentPlayer) {
-                    winningPossibleStage++;
+                    winningPossibleCount++;
                 }
             }
-            if (winningPossibleStage == 3) {
-                return true;
-            }
         }
-        return false;
+        return winningPossibleCount == 3;
     }
 
     /**
