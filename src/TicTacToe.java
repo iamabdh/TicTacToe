@@ -120,6 +120,7 @@ public class TicTacToe {
 
     /**
      * getRowColumn used to perform specific calculation for getting row and column as index of board
+     * for example: if place number selected 3 it return [0, 2] as index for the board
      */
     public static int[] getRowColumn(int number) {
         return new int[] {(int)Math.ceil(number / 3.0) - 1,  (number - 1) % 3};
