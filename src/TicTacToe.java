@@ -107,8 +107,6 @@ public class TicTacToe {
                 int column = rowColumn[1];
                 if (board[row][column] == currentPlayer) {
                     winningPossibleStage++;
-                } else {
-                    continue;
                 }
             }
             if (winningPossibleStage == 3) {
