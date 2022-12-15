@@ -33,8 +33,11 @@ public class TicTacToe {
         boolean togglePlayer = true;
         // gameTryCount used to count the number of tries for game.
         int gameTryCount = 0;
+        // current player
+        char currentPlayer;
+        // boolean isPlayerWin : flag used to exist loop
+        boolean isPlayerWin = false;
         do {
-            char currentPlayer;
             if (togglePlayer) {
                currentPlayer = symbolPlayerOne;
             } else {
@@ -52,13 +55,18 @@ public class TicTacToe {
                 togglePlayer = !togglePlayer;
                 gameTryCount++;
                 if (playerWin(currentPlayer)) {
-                    System.out.println("Player "+ currentPlayer +" win :)");
-                    break;
+                    isPlayerWin = true;
                 }
             } else {
                 System.out.println("Invalid input: you may type used place or place number not exists :)");
             }
-        } while (!(gameTryCount >= 9));
+        } while (!(gameTryCount >= 9) && !isPlayerWin);
+        
+        if (isPlayerWin) {
+        	 System.out.println("Player "+ currentPlayer +" win :)");
+        } else {
+        	 System.out.println("Draw :(");
+        }
     }
 
     /**
