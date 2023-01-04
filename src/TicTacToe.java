@@ -46,12 +46,11 @@ public class TicTacToe {
         	symbolPlayerOneSaved = TicTacToeGameData.get("player").get(0).get(0);
         	symbolPlayerTwoSaved = TicTacToeGameData.get("player").get(0).get(1);
         	currentPlayerSaved = TicTacToeGameData.get("current").get(0).get(0);
-        	gameCountInteger = (int)TicTacToeGameData.get("count").get(0).get(0) - 48;
-        	System.out.println("Count game: "+ gameCountInteger);
-//        	if (gameCharacter != null) {
-//        		System.out.println(gameCharacter);
-//        		gameCountInteger = Integer.parseInt(String.valueOf(gameCharacter));
-//        	}
+        	gameCountInteger = (int)TicTacToeGameData.get("count").get(0).get(0);
+        	if (gameCountInteger > 9) {
+        		gameCountInteger = 0;
+        	}
+        	System.out.println("Game count left: "+ gameCountInteger);
         	
         } else {
         	
@@ -189,6 +188,7 @@ public class TicTacToe {
 				while (filScanner.hasNextLine()) {
 					dataStudentJsonString += filScanner.nextLine();
 				}
+				filScanner.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
