@@ -39,7 +39,7 @@ public class TicTacToe {
         
         // load data from file
         TicTacToeGameData = gson.fromJson(LoadFileData(), new TypeToken<HashMap<String, ArrayList<ArrayList<Character>>>>(){}.getType());
-        
+        // to check if the not exist in json file
         if (TicTacToeGameData != null) {
         	// data loaded 
         	boardArrayList = TicTacToeGameData.get("board");
